@@ -11,7 +11,7 @@ abstract public class Dados {
     
     public static EntityManager getManager() {
         if(manager == null){
-            EntityManagerFactory factory = Persistence.createEntityManagerFactory("projeto_AtendimentoRelatorioPU");
+            EntityManagerFactory factory = Persistence.createEntityManagerFactory("projeto_Atendimento_RelatorioPU");
             manager = factory.createEntityManager();
         }
         return manager;

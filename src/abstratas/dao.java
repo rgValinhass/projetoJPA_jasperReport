@@ -24,5 +24,4 @@ abstract public class dao<T> {
     public T read(Class<T> classeRetorno, int id){
         return Dados.getManager().find(classeRetorno, id);
     }
-    
 }

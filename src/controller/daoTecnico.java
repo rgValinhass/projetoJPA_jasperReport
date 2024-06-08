@@ -15,7 +15,7 @@ public class daoTecnico extends dao<Tecnico>{
         return query.getResultList();
     }
     
-    public List<Tecnico> read(String filtroNome){
+    public List<Tecnico> readByNome(String filtroNome){
         String JPQL = "select t from Tecnico t where t.nome like ?1 order by t.nome";
         Query query = Dados.getManager().createQuery(JPQL);
         query.setParameter(1, "%"+filtroNome.toUpperCase()+"%");
