@@ -1,52 +1,45 @@
 
 package view;
 
-import controller.daoTecnico;
+import controller.daoProblema;
 import javax.swing.JOptionPane;
-import model.Tecnico;
+import model.Problema;
 
 
-public class dialogTecnico extends javax.swing.JDialog {
+public class dialogProblema extends javax.swing.JDialog {
 
-    private daoTecnico dao = new daoTecnico();
+    private daoProblema dao = new daoProblema();
     
     private void carregaTable(){
-        tabela.setModel(new MyTableModel(Tecnico.class, dao.read(), tabela));
-    }    
+        tabela.setModel(new MyTableModel(Problema.class, dao.read(), tabela));
+    }
     
     private void carregaTableNome(String filtro){
-        tabela.setModel(new MyTableModel(Tecnico.class, dao.readByNome(filtro), tabela));
+        tabela.setModel(new MyTableModel(Problema.class, dao.readByNome(filtro), tabela));
     }
     
     private void limpaComponentes(){
         textId.setText("");
         textNome.setText("");
-        textEspecialidade.setText("");
-        textEmail.setText("");
     }
     
-    private Tecnico retornaObjeto(){
-        Tecnico t = new Tecnico();
-        t.setId(textId.getText().trim().isEmpty() ? 0 : Integer.parseInt(textId.getText()));
-        t.setNome(textNome.getText());
-        t.setEspecialidade(textEspecialidade.getText());
-        t.setEmail(textEmail.getText());
-        return (t);
-    }
-    
-    private void populaComponentes(Tecnico t){
-        textId.setText(t.getId()+"");
-        textNome.setText(t.getNome());
-        textEspecialidade.setText(t.getEspecialidade());
-        textEmail.setText(t.getEmail());
+    private void populaComponentes(Problema p){
+        textId.setText(p.getId()+"");
+        textNome.setText(p.getNome());
     }
     
     private boolean camposValidos(){
-        return (!textNome.getText().trim().isEmpty() && (!textEmail.getText().trim().isEmpty()));
+        return (!textNome.getText().trim().isEmpty());
     }
     
+    private Problema retornoObjeto(){
+        Problema p = new Problema();
+        p.setId(textId.getText().trim().isEmpty() ? 0 : Integer.parseInt(textId.getText()));
+        p.setNome(textNome.getText());
+        return(p);
+    }
     
-    public dialogTecnico(java.awt.Frame parent, boolean modal) {
+    public dialogProblema(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -59,24 +52,19 @@ public class dialogTecnico extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         painel = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
-        textEmail = new javax.swing.JTextField();
-        textEspecialidade = new javax.swing.JTextField();
-        textNome = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         textId = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        textNome = new javax.swing.JTextField();
         buttonNovo = new javax.swing.JButton();
         buttonSalvar = new javax.swing.JButton();
         buttonApagar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        textFiltro = new javax.swing.JTextField();
         buttonFiltrar = new javax.swing.JButton();
+        textFiltrar = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -86,24 +74,12 @@ public class dialogTecnico extends javax.swing.JDialog {
         });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.setForeground(new java.awt.Color(0, 51, 51));
 
-        painel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 51)));
-        painel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                painelMouseClicked(evt);
-            }
-        });
+        jLabel2.setText("Código");
+
+        jLabel3.setText("Nome");
 
         textId.setEditable(false);
-
-        jLabel6.setText("Código");
-
-        jLabel7.setText("Nome");
-
-        jLabel8.setText("Especialidade");
-
-        jLabel9.setText("E-mail");
 
         buttonNovo.setText("Novo");
         buttonNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -131,69 +107,46 @@ public class dialogTecnico extends javax.swing.JDialog {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(textNome, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)))
+                    .addComponent(buttonNovo))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(textEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                        .addComponent(textEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(70, 70, 70)
-                                .addComponent(textId, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(buttonNovo)
-                                .addGap(38, 38, 38)
-                                .addComponent(buttonSalvar)
-                                .addGap(38, 38, 38)
-                                .addComponent(buttonApagar)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(176, 176, 176))
+                            .addComponent(textId, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textNome, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonSalvar)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonApagar)))
+                .addGap(0, 218, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(31, 31, 31)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                    .addComponent(jLabel2)
+                    .addComponent(textId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
-                .addGap(41, 41, 41)
+                    .addComponent(jLabel3)
+                    .addComponent(textNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(51, 51, 51)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonNovo)
                     .addComponent(buttonSalvar)
                     .addComponent(buttonApagar))
-                .addContainerGap(272, Short.MAX_VALUE))
+                .addContainerGap(334, Short.MAX_VALUE))
         );
 
         painel.addTab("Cadastro", jPanel2);
-
-        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel3MouseClicked(evt);
-            }
-        });
 
         tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -213,9 +166,9 @@ public class dialogTecnico extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(tabela);
 
-        jLabel1.setText("Pesquisa");
+        jLabel1.setText("Filtro");
 
-        buttonFiltrar.setText("Consultar");
+        buttonFiltrar.setText("Filtrar");
         buttonFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonFiltrarActionPerformed(evt);
@@ -230,31 +183,26 @@ public class dialogTecnico extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(buttonFiltrar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(textFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                        .addComponent(buttonFiltrar)
+                        .addGap(93, 93, 93))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(155, 155, 155)
-                .addComponent(jLabel4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(22, 22, 22)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(textFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonFiltrar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonFiltrar)
+                    .addComponent(textFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -266,12 +214,12 @@ public class dialogTecnico extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painel, javax.swing.GroupLayout.PREFERRED_SIZE, 585, Short.MAX_VALUE)
+                .addComponent(painel)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(painel)
                 .addContainerGap())
@@ -297,11 +245,10 @@ public class dialogTecnico extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+    private void buttonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNovoActionPerformed
         // TODO add your handling code here:
-        this.carregaTable();
-        painel.setSelectedIndex(0);
-    }//GEN-LAST:event_formWindowOpened
+        this.limpaComponentes();
+    }//GEN-LAST:event_buttonNovoActionPerformed
 
     private void buttonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalvarActionPerformed
         // TODO add your handling code here:
@@ -310,55 +257,42 @@ public class dialogTecnico extends javax.swing.JDialog {
             textNome.requestFocus();
             return;
         }
-            Tecnico t = this.retornaObjeto();
+        Problema p = retornoObjeto();
         try{
             if(textId.getText().equals("")){
-                dao.create(t);
+                dao.create(p);
             }else{
-                dao.update(t);
+                dao.update(p);
             }
             this.limpaComponentes();
             buttonFiltrar.doClick();
         }catch(Exception ex){
-            JOptionPane.showMessageDialog(null, "erro " +ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro "+ex.getMessage());
         }
     }//GEN-LAST:event_buttonSalvarActionPerformed
 
-    private void buttonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNovoActionPerformed
-        // TODO add your handling code here:
-        this.limpaComponentes();
-    }//GEN-LAST:event_buttonNovoActionPerformed
-
     private void buttonApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonApagarActionPerformed
         // TODO add your handling code here:
-        if (textId.getText().isEmpty()){
+        if(textId.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Selecione um registro");
+            painel.setSelectedIndex(1);
             return;
         }
         
         try{
             int codigo = Integer.parseInt(textId.getText());
-            dao.delete(dao.read(Tecnico.class, codigo));
+            dao.delete(dao.read(Problema.class, codigo));
             this.limpaComponentes();
             buttonFiltrar.doClick();
-            painel.setSelectedIndex(1);
+            painel.setSelectedIndex(0);
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Erro "+ex.getMessage());
         }
-        
     }//GEN-LAST:event_buttonApagarActionPerformed
-
-    private void painelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_painelMouseClicked
-
-    }//GEN-LAST:event_painelMouseClicked
-
-    private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel3MouseClicked
 
     private void buttonFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFiltrarActionPerformed
         // TODO add your handling code here:
-        this.carregaTableNome(textFiltro.getText());
+        this.carregaTableNome(textFiltrar.getText());
     }//GEN-LAST:event_buttonFiltrarActionPerformed
 
     private void tabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMouseClicked
@@ -366,12 +300,20 @@ public class dialogTecnico extends javax.swing.JDialog {
         if (evt.getClickCount()==2){
             String v = tabela.getValueAt(tabela.getSelectedRow(), 0)+"";
             int codigo = Integer.parseInt(v);
-            this.populaComponentes(dao.read(Tecnico.class, codigo));
+            this.populaComponentes(dao.read(Problema.class, codigo));
             painel.setSelectedIndex(0);
         }
     }//GEN-LAST:event_tabelaMouseClicked
 
-    
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        this.carregaTable();
+        painel.setSelectedIndex(0);
+    }//GEN-LAST:event_formWindowOpened
+
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -386,20 +328,20 @@ public class dialogTecnico extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(dialogTecnico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dialogProblema.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(dialogTecnico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dialogProblema.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(dialogTecnico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dialogProblema.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(dialogTecnico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dialogProblema.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                dialogTecnico dialog = new dialogTecnico(new javax.swing.JFrame(), true);
+                dialogProblema dialog = new dialogProblema(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -417,20 +359,15 @@ public class dialogTecnico extends javax.swing.JDialog {
     private javax.swing.JButton buttonNovo;
     private javax.swing.JButton buttonSalvar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane painel;
     private javax.swing.JTable tabela;
-    private javax.swing.JTextField textEmail;
-    private javax.swing.JTextField textEspecialidade;
-    private javax.swing.JTextField textFiltro;
+    private javax.swing.JTextField textFiltrar;
     private javax.swing.JTextField textId;
     private javax.swing.JTextField textNome;
     // End of variables declaration//GEN-END:variables

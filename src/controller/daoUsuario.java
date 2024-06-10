@@ -16,7 +16,7 @@ public class daoUsuario extends dao<Usuario>{
     }
     
     public List<Usuario> readByNome(String filtroNome){
-        String JPQL = "select u from Usuario u where u.nome like ?1 order u.nome";
+        String JPQL = "select u from Usuario u where u.nome like ?1 order by u.nome";
         Query query = Dados.getManager().createQuery(JPQL);
         query.setParameter(1, "%"+filtroNome.toUpperCase()+"%");
         return query.getResultList();
