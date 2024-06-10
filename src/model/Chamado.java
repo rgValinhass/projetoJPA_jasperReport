@@ -120,6 +120,44 @@ public class Chamado implements java.io.Serializable{
         this.problema = problema == null ? new Problema() : problema;
     }
 
+    public int getId() {
+        return this.id;
+    }
+
+    public LocalDate getData() {
+        return this.data;
+    }
+
+    public String getDescricao() {
+        return this.descricao;
+    }
+
+    public Classificacao getClassificacao() {
+        return this.classificacao;
+    }
+
+    public Status getStatus() {
+        return this.status;
+    }
+
+    public Pecas getPecas() {
+        return this.pecas;
+    }
+
+    public Tecnico getTecnico() {
+        return this.tecnico;
+    }
+
+    public Usuario getUsuario() {
+        return this.usuario;
+    }
+
+    public Problema getProblema() {
+        return this.problema;
+    }
+    
+    
+
     @Override
     public int hashCode() {
         int hash = 3;
