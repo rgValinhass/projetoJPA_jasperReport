@@ -296,7 +296,7 @@ public class dialogSetor extends javax.swing.JDialog {
             buttonFiltrar.doClick();
             painel.setSelectedIndex(1);
         }catch(Exception ex){
-            JOptionPane.showMessageDialog(null, "Erro "+ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro, impossível excluir o setor que já tenha sido cadastrado há um USUARIO, exclua o USUÁRIO primeiro!! "+ex.getMessage());
         }
     }//GEN-LAST:event_buttonApagarActionPerformed
 

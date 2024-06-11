@@ -50,10 +50,12 @@ public class Chamado implements java.io.Serializable{
     
     @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.DETACH)
     @JoinColumn(name = "id_tecnico", nullable = false, referencedColumnName = "id")
+    @SwingColumn(description = "Técnico")
     private Tecnico tecnico;
     
     @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.DETACH)
     @JoinColumn(name = "id_usuario", nullable = false, referencedColumnName = "id")
+    @SwingColumn(description = "Usuário")
     private Usuario usuario;
     
     @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.DETACH)
