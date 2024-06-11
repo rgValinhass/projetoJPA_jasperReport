@@ -1,5 +1,5 @@
 
-package crud;
+/*package crud;
 
 import controller.daoTecnico;
 import model.Tecnico;
@@ -21,4 +21,4 @@ public class crudTecnico {
         System.out.println("------------------------------------");
     }
     
-}
+}*/
