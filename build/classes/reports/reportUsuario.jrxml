@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportUsuario" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="adc5f53c-8923-4a5c-b76f-1cd4912b776a">
-	<property name="ireport.zoom" value="1.3310000000000004"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.zoom" value="1.6105100000000014"/>
+	<property name="ireport.x" value="87"/>
 	<property name="ireport.y" value="0"/>
 	<queryString language="SQL">
 		<![CDATA[select * from tb_usuario order by nome]]>
@@ -35,10 +35,7 @@
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="30" splitType="Stretch">
-			<rectangle>
-				<reportElement x="0" y="0" width="555" height="30" uuid="ffab6f59-7a9e-4dd7-a94d-d686f07d17b4"/>
-			</rectangle>
+		<band height="25" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="0" width="185" height="20" uuid="89811dca-d7fd-4e56-a9c4-06fc1456b703"/>
 				<text><![CDATA[Código:]]></text>
@@ -51,13 +48,13 @@
 				<reportElement x="185" y="0" width="185" height="20" uuid="641d03ba-268c-4075-b935-f90d470e6f65"/>
 				<text><![CDATA[Nome:]]></text>
 			</staticText>
+			<line>
+				<reportElement x="0" y="23" width="555" height="1" uuid="3db23998-40be-4a2d-a76b-20271b17c10d"/>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="37" splitType="Stretch">
-			<rectangle>
-				<reportElement x="0" y="0" width="555" height="37" uuid="f81aa7d6-3dd0-4af1-8238-15c01dc5ab41"/>
-			</rectangle>
 			<textField>
 				<reportElement x="0" y="0" width="185" height="20" uuid="1586bdbf-2f02-46a8-8cfb-2ac75ff1c088"/>
 				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
@@ -76,7 +73,7 @@
 		<band height="36" splitType="Stretch">
 			<textField>
 				<reportElement x="446" y="16" width="71" height="20" uuid="7210faf9-1b81-4d83-a8a5-80652283cc1a"/>
-				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" of" ]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="517" y="16" width="38" height="20" uuid="0422a00f-0078-484b-b474-1146a279827b"/>
