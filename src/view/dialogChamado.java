@@ -130,13 +130,13 @@ public class dialogChamado extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        label_Descricao = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        label_Tecnico = new javax.swing.JLabel();
+        label_Usuario = new javax.swing.JLabel();
+        label_Problema = new javax.swing.JLabel();
         textId = new javax.swing.JTextField();
         textData = new javax.swing.JFormattedTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -174,7 +174,12 @@ public class dialogChamado extends javax.swing.JDialog {
 
         jLabel2.setText("Data");
 
-        jLabel3.setText("Descrição");
+        label_Descricao.setText("Descrição");
+        label_Descricao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                label_DescricaoMouseClicked(evt);
+            }
+        });
 
         jLabel4.setText("Classificação");
 
@@ -182,11 +187,16 @@ public class dialogChamado extends javax.swing.JDialog {
 
         jLabel6.setText("Peças");
 
-        jLabel7.setText("Técnico");
+        label_Tecnico.setText("Técnico");
+        label_Tecnico.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                label_TecnicoMouseClicked(evt);
+            }
+        });
 
-        jLabel8.setText("Usuário");
+        label_Usuario.setText("Usuário");
 
-        jLabel9.setText("Problema");
+        label_Problema.setText("Problema");
 
         textId.setEditable(false);
 
@@ -245,13 +255,13 @@ public class dialogChamado extends javax.swing.JDialog {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)
+                            .addComponent(label_Descricao)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8)
+                            .addComponent(label_Tecnico, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label_Usuario)
                             .addComponent(jLabel4)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(label_Problema, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(textId, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -286,7 +296,7 @@ public class dialogChamado extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel3))
+                        .addComponent(label_Descricao))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -305,15 +315,15 @@ public class dialogChamado extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                    .addComponent(label_Tecnico))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
+                    .addComponent(label_Usuario)
                     .addComponent(comboUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboProblema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
+                    .addComponent(label_Problema))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonNovo)
@@ -537,6 +547,14 @@ public class dialogChamado extends javax.swing.JDialog {
         carregaComboProblema();
     }//GEN-LAST:event_formWindowOpened
 
+    private void label_DescricaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_DescricaoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_label_DescricaoMouseClicked
+
+    private void label_TecnicoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_TecnicoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_label_TecnicoMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -595,18 +613,18 @@ public class dialogChamado extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> comboUsuario_Consulta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel label_Descricao;
+    private javax.swing.JLabel label_Problema;
+    private javax.swing.JLabel label_Tecnico;
+    private javax.swing.JLabel label_Usuario;
     private javax.swing.JTabbedPane painel;
     private javax.swing.JRadioButton radioFiltro;
     private javax.swing.JRadioButton radioTecnico;

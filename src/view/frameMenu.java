@@ -34,6 +34,10 @@ public class frameMenu extends javax.swing.JFrame {
         menuProblema = new javax.swing.JMenuItem();
         menuPeças = new javax.swing.JMenuItem();
         menuSetor = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        menuRelatorio_Tecnico = new javax.swing.JMenuItem();
+        menuRelatorio_Usuario = new javax.swing.JMenuItem();
+        menuRelatorio_Chamado = new javax.swing.JMenuItem();
 
         jMenu7.setText("File");
         jMenuBar2.add(jMenu7);
@@ -99,6 +103,34 @@ public class frameMenu extends javax.swing.JFrame {
 
         jMenuBar1.add(menu);
 
+        jMenu1.setText("Relatórios");
+
+        menuRelatorio_Tecnico.setText("Relatório Técnico");
+        menuRelatorio_Tecnico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuRelatorio_TecnicoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuRelatorio_Tecnico);
+
+        menuRelatorio_Usuario.setText("Relatório Usuário");
+        menuRelatorio_Usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuRelatorio_UsuarioActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuRelatorio_Usuario);
+
+        menuRelatorio_Chamado.setText("Relatório Chamado");
+        menuRelatorio_Chamado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuRelatorio_ChamadoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuRelatorio_Chamado);
+
+        jMenuBar1.add(jMenu1);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -113,6 +145,7 @@ public class frameMenu extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuChamadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuChamadoActionPerformed
@@ -144,6 +177,18 @@ public class frameMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         new dialogSetor(this, true).setVisible(true);
     }//GEN-LAST:event_menuSetorActionPerformed
+
+    private void menuRelatorio_TecnicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRelatorio_TecnicoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuRelatorio_TecnicoActionPerformed
+
+    private void menuRelatorio_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRelatorio_UsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuRelatorio_UsuarioActionPerformed
+
+    private void menuRelatorio_ChamadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRelatorio_ChamadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuRelatorio_ChamadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -181,6 +226,7 @@ public class frameMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
@@ -191,6 +237,9 @@ public class frameMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuChamado;
     private javax.swing.JMenuItem menuPeças;
     private javax.swing.JMenuItem menuProblema;
+    private javax.swing.JMenuItem menuRelatorio_Chamado;
+    private javax.swing.JMenuItem menuRelatorio_Tecnico;
+    private javax.swing.JMenuItem menuRelatorio_Usuario;
     private javax.swing.JMenuItem menuSetor;
     private javax.swing.JMenuItem menuTecnico;
     private javax.swing.JMenuItem menuUsuario;
